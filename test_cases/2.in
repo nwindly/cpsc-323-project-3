@@ -1,0 +1,10 @@
+int main()
+{
+    int myInt;
+    float myFloat = 1;
+
+    myFloat = 2 + myOtherFloat;
+    printf(myInt);
+
+    return 0.1;
+}
