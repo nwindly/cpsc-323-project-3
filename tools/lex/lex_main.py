@@ -5,7 +5,7 @@ from .dfa import *
 from .tokenizer import *
 import os
 
-def lex(filename):
+def lexer(filename):
     if not os.path.isfile(filename):
         print(f"Error: File '{filename}' not found.")
         print("Please make sure to properly pass the name of the file.")
