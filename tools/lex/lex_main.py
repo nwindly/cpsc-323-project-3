@@ -87,4 +87,10 @@ def lexer(filename):
         token_stream = token_stream + " " + token
         # DEBUG: print(f"For '{chars_scanned}', saved '{token}' to token_stream")
 
-    print("Token stream:", token_stream)
+    # print("Token stream:", token_stream)
+
+    final_token_stream = token_stream.split()
+    # print(final_token_stream)
+
+    return final_token_stream
+
