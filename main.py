@@ -1,4 +1,4 @@
-from tools.lex.lex_main import lexer
+from tools.lexer.lexer_main import lexer
 from tools.parser.parser_main import parser
 
 def main():
