@@ -88,6 +88,3 @@ def lex(filename):
         # DEBUG: print(f"For '{chars_scanned}', saved '{token}' to token_stream")
 
     print("Token stream:", token_stream)
-
-# if __name__ == "__lex__":
-#     lex("input.in")
