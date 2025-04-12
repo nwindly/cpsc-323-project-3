@@ -1,9 +1,9 @@
-from get_tokens import *
-from data import *
-from tree import *
+from .get_tokens import *
+from .data import *
+from .tree import *
 
 # Change this from True/False to enable/disable debug log
-DEBUG = False
+DEBUG = True
 
 
 def debug_print(message):
@@ -11,8 +11,8 @@ def debug_print(message):
         print(message)
 
 
-def main():
-    input = get_tokens("./test_cases/1.in")
+def parser(filename):
+    input = get_tokens(filename)
 
     if not input:
         return
@@ -91,6 +91,3 @@ def main():
                 print("CST is empty.")
             break
 
-
-if __name__ == "__main__":
-    main()

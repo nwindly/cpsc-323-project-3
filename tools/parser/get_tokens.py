@@ -1,4 +1,4 @@
-import data
+from . import data
 
 # Gets input string and converts it into an array of tokens.
 def get_tokens(filename):
