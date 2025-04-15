@@ -86,8 +86,9 @@ def parser(filename):
             debug_print("Parsing successful. Accepting input.\n")
             debug_print("Concrete Syntax Tree:")
             if cst_stack:
-                cst_stack[0].print_tree()
+                return cst_stack[0]
             else:
                 print("CST is empty.")
             break
+        
 
