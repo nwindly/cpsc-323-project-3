@@ -9,6 +9,7 @@ def main():
     with open('parser_input.in', 'w') as file:
         file.write(parser_input)
 
+    # Change this function below to accept not from .in file but directly from token_stream (array)
     parser("./parser_input.in")
 
 if __name__ == "__main__":
