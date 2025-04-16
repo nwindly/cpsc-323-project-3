@@ -1,8 +1,7 @@
 # TO DO: MAKE CHANGES HERE
 
 
-from .get_tokens import *
-from .data import *
+from .parser_data import *
 from .tree import *
 
 # Change this from True/False to enable/disable debug log
@@ -14,8 +13,8 @@ def debug_print(message):
         print(message)
 
 
-def parser(filename):
-    input = get_tokens(filename)
+def parser(token_stream):
+    input = token_stream
 
     if not input:
         return
