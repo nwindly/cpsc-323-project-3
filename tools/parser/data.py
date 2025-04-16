@@ -1,3 +1,5 @@
+# TO DO: MAKE CHANGES HERE
+
 valid_tokens = ["id", "+", "-", "*", "/", "(", ")"]
 
 table_column = ["id", "+", "-", "*", "/", "(", ")", "$", "E", "T", "F"]
