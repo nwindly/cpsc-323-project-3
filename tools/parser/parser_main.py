@@ -1,6 +1,3 @@
-# TO DO: MAKE CHANGES HERE
-
-
 from .parser_data import *
 from .tree import *
 
@@ -20,7 +17,7 @@ def parser(token_stream):
         return
 
     input.append("$")
-    debug_print(input)
+    debug_print(f"Start:\n{input}\n")
 
     stack = [0]
     cst_stack = []
