@@ -1,8 +1,6 @@
-# TO DO: MAKE CHANGES HERE
+valid_tokens = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen"]
 
-valid_tokens = ["id", "+", "-", "*", "/", "(", ")"]
-
-table_column = ["id", "+", "-", "*", "/", "(", ")", "$", "E", "T", "F"]
+table_column = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "$", "E", "T", "F"]
 table = [
 #     id     +     -      *     /    (      )     $     E      T      F  
     ["S5",  None, None, None, None, "S4", None, None,  "1",   "2",   "3"  ],  # state 0
