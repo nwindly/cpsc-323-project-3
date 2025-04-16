@@ -1,6 +1,7 @@
 valid_tokens = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen"]
 
 table_column = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "$", "E", "T", "F"]
+
 table = [
 #     id     +     -      *     /    (      )     $     E      T      F  
     ["S5",  None, None, None, None, "S4", None, None,  "1",   "2",   "3"  ],  # state 0
@@ -21,7 +22,6 @@ table = [
     [None,  "R7", "R7", "R7", "R7", None, "R7", "R7",  None, None, None ]   # state 15
 ]
 
-# Production rules from the provided grammar
 productions = {
     1: ("E", ["E", "+", "T"]),
     2: ("E", ["E", "-", "T"]),
