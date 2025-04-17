@@ -1,7 +1,12 @@
-valid_tokens = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen"]
+# Plan:
+# I'm thinking about choosing only the necessary tokens for the test cases because the table will be too big and complicated.
 
+valid_tokens = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "int", "main", "leftBrace", "assignment", "integer", "semicolon", "float", "dot", "bool"]
+
+# TO DO: fix table_column
 table_column = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "$", "E", "T", "F"]
 
+# TO DO: fix table
 table = [
 #     id     +     -      *     /    (      )     $     E      T      F  
     ["S5",  None, None, None, None, "S4", None, None,  "1",   "2",   "3"  ],  # state 0
@@ -22,6 +27,7 @@ table = [
     [None,  "R7", "R7", "R7", "R7", None, "R7", "R7",  None, None, None ]   # state 15
 ]
 
+# TO DO: fix productions
 productions = {
     1: ("E", ["E", "plus", "T"]),
     2: ("E", ["E", "minus", "T"]),
