@@ -4,9 +4,9 @@
 valid_tokens = ["int", "main", "leftParen", "rightParen", "leftBrace", "rightBrace", "identifier", "assignment", "integer", "semicolon", "float", "dot", "bool", "plus", "return"]
 
 # TO DO: fix table_column according to the table
-table_column = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "$", "E", "T", "F"]
+table_column = []
 
-# TO DO: fix table
+# TO DO: fix table according to our valid tokens
 table = [
 #     id     +     -      *     /    (      )     $     E      T      F  
     ["S5",  None, None, None, None, "S4", None, None,  "1",   "2",   "3"  ],  # state 0
@@ -27,7 +27,7 @@ table = [
     [None,  "R7", "R7", "R7", "R7", None, "R7", "R7",  None, None, None ]   # state 15
 ]
 
-# TO DO: fix productions
+# TO DO: fix productions accordingly
 productions = {
     1: ("E", ["E", "plus", "T"]),
     2: ("E", ["E", "minus", "T"]),
