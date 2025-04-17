@@ -1,9 +1,9 @@
 # Plan:
 # I'm thinking about choosing only the necessary tokens for the test cases because the table will be too big and complicated.
 
-valid_tokens = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "int", "main", "leftBrace", "assignment", "integer", "semicolon", "float", "dot", "bool"]
+valid_tokens = ["int", "main", "leftParen", "rightParen", "leftBrace", "rightBrace", "identifier", "assignment", "integer", "semicolon", "float", "dot", "bool", "plus", "return"]
 
-# TO DO: fix table_column
+# TO DO: fix table_column according to the table
 table_column = ["identifier", "plus", "minus", "multiply", "divide", "leftParen", "rightParen", "$", "E", "T", "F"]
 
 # TO DO: fix table
