@@ -6,8 +6,8 @@ table_column = ["leftBrace", "rightBrace", "plus", "minus", "assignment", "multi
 
 # Fix table according to our valid tokens
 table = [
-#       {       }       +       -       =       *       /       ;       (       )       identifier  integer dot     true    false   printf  int     float   bool    main    return  $       E'      P       B       E       T       F       A       M       R
-        [None,  None,   None,   None,   None,   None,   None,   None,   None,   None,   None,       None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,  None,  None],  # 0
+#       {       }       +       -       =       *       /       ;       (       )      identifier  integer   dot     true    false   printf  int     float   bool    main   return    $       E'      P       B       E       T       F       A       M       R
+        ["S4",  "R5",   None,   None,   None,   None,   None,   None,   "S12",  None,   "S13",      "S14",  None,   "S15",  "S16",  "S17",   "S9",  "S10",  "S11",   None,  "S18",  "R5",   None,   "1",     "2",   "3",    "8",   "6",     "5",   None,    "7"],  # 0
         [None,  None,   None,   None,   None,   None,   None,   None,   None,   None,   None,       None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,  None,  None],  # 1
         [None,  None,   None,   None,   None,   None,   None,   None,   None,   None,   None,       None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,  None,  None],  # 2
         [None,  None,   None,   None,   None,   None,   None,   None,   None,   None,   None,       None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,   None,  None,  None],  # 3
