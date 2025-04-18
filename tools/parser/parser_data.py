@@ -30,10 +30,10 @@ table = [
 # TO DO: fix productions accordingly
 productions = {
     1: ("P", ["F"]),
-    2: ("F", ["Type", "main", "leftParen", "rightParen", "B"]),
-    3: ("Type", ["int"]),
-    4: ("Type", ["float"]),
-    5: ("Type", ["bool"]),
+    2: ("F", ["T", "main", "leftParen", "rightParen", "B"]),
+    3: ("T", ["int"]),
+    4: ("T", ["float"]),
+    5: ("T", ["bool"]),
     6: ("B", ["leftBrace", "S", "rightBrace"]),
     7: ("S", ["S", "S"]),
     8: ("S", ["S"]),
