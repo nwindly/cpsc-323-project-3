@@ -29,12 +29,25 @@ table = [
 
 # TO DO: fix productions accordingly
 productions = {
-    1: ("E", ["E", "plus", "T"]),
-    2: ("E", ["E", "minus", "T"]),
-    3: ("E", ["T"]),
-    4: ("T", ["T", "multiply", "F"]),
-    5: ("T", ["T", "divide", "F"]),
-    6: ("T", ["F"]),
-    7: ("F", ["leftParen", "E", "rightParen"]),
-    8: ("F", ["identifier"])
+    1: ("P", ["F"]),
+    2: ("F", ["Type", "main", "leftParen", "rightParen", "B"]),
+    3: ("Type", ["int"]),
+    4: ("Type", ["float"]),
+    5: ("Type", ["bool"]),
+    6: ("B", ["leftBrace", "S", "rightBrace"]),
+    7: ("S", ["S", "S"]),
+    8: ("S", ["S"]),
+    9: ("S", ["D"]),
+    10: ("S", ["A"]),
+    11: ("S", ["R"]),
+    12: ("D", ["Type", "id", "assignment", "V", "semicolon"]),
+    13: ("A", ["id", "assignment", "E", "semicolon"]),
+    14: ("R", ["return", "V", "semicolon"]),
+    15: ("E", ["id"])
+    16: ("E", ["V"])
+    17: ("E", ["E", "plus", "E"])
+    18: ("V", ["integer"])
+    19: ("V", ["integer", "dot", "integer"])
+    20: ("V", ["id"])
+    21: ("V", ["true"])
 }
