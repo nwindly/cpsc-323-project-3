@@ -1,30 +1,29 @@
-# Plan:
 # I'm thinking about choosing only the necessary tokens for the test cases because the table will be too big and complicated.
-
 valid_tokens = ["int", "main", "leftParen", "rightParen", "leftBrace", "rightBrace", "identifier", "assignment", "integer", "semicolon", "float", "dot", "bool", "plus", "return"]
 
-# TO DO: fix table_column according to the table
-table_column = []
+# Fix table_column according to the table
+table_column = ["int", "main", "leftParen", "rightParen", "leftBrace", "rightBrace", "identifier", "assignment", "integer", "semicolon", "float", "dot", "bool", "plus", "return", "$", "P", "F", "T", "B", "S", "A", "R", "D", "V", "E"]
 
-# TO DO: fix table according to our valid tokens
+# Fix table according to our valid tokens
 table = [
-#     id     +     -      *     /    (      )     $     E      T      F  
-    ["S5",  None, None, None, None, "S4", None, None,  "1",   "2",   "3"  ],  # state 0
-    [None,  "S6", "S7", None, None, None, None, "Acc", None, None, None ],  # state 1
-    [None,  "R3", "R3", "S8", "S9", None, "R3", "R3",  None, None, None ],  # state 2
-    [None,  "R6", "R6", "R6", "R6", None, "R6", "R6",  None, None, None ],  # state 3
-    ["S5",  None, None, None, None, "S4", None, None, "10",  "2",   "3"  ],  # state 4
-    [None,  "R8", "R8", "R8", "R8", None, "R8", "R8",  None, None, None ],  # state 5
-    ["S5",  None, None, None, None, "S4", None, None, None,  "11",  "3"  ],  # state 6
-    ["S5",  None, None, None, None, "S4", None, None, None,  "12",  "3"  ],  # state 7
-    ["S5",  None, None, None, None, "S4", None, None, None,  None,  "13" ],  # state 8
-    ["S5",  None, None, None, None, "S4", None, None, None,  None,  "14" ],  # state 9
-    [None,  "S6", "S7", None, None, None, "S15", None, None, None, None ],  # state 10
-    [None,  "R1", "R1", "S8", "S9", None, "R1", "R1",  None, None, None ],  # state 11
-    [None,  "R2", "R2", "S8", "S9", None, "R2", "R2",  None, None, None ],  # state 12
-    [None,  "R4", "R4", "R4", "R4", None, "R4", "R4",  None, None, None ],  # state 13
-    [None,  "R5", "R5", "R5", "R5", None, "R5", "R5",  None, None, None ],  # state 14
-    [None,  "R7", "R7", "R7", "R7", None, "R7", "R7",  None, None, None ]   # state 15
+#       int     main    leftParen rightParen leftBrace rightBrace identifier assignment integer semicolon float   dot    bool   plus   return  $     P     F     T     B     S     A     R     D     V     E
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 0
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 1
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 2
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 3
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 4
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 5
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 6
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 7
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 8
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 9
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 10
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 11
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 12
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 13
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 14
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None],  # 15
+        [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None]   # 16
 ]
 
 # TO DO: fix productions accordingly
