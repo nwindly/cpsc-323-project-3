@@ -26,16 +26,19 @@ table = [
         [None,  None,   None,     None,      None,     None,      None,      None,      None,   None,     None,  None,  None,  None,  None,   None, None, None, None, None, None, None, None, None, None, None]   # 16
 ]
 
-# TO DO: fix productions accordingly
-# Work in Progress Production Rules
+# Production Rules Done. Passing tokens for both test cases
 # E' -> P
 # P -> B
 # B -> E B
 # B -> { B }
+# B -> A M B
 # B -> ''
 # E -> E + T
 # E -> E - T
 # E -> A F = T
+# E -> A T
+# E -> F = T
+# E -> R
 # E -> T
 # T -> T * F
 # T -> T / F
@@ -44,8 +47,22 @@ table = [
 # F -> ( E )
 # F -> id
 # F -> num
+# F -> num . num
+# F -> true
+# F -> false
+# F -> func ( E )
 # A -> int
 # A -> float
+# A -> bool
+# M -> main ( )
+# R -> return E
 
 # Use this website
 #   https://jsmachines.sourceforge.net/machines/slr.html 
+
+# Both tests cases parsing correctly
+# Tokens from test case 1:
+# int main ( ) { int id = num ; float id = num . num ; bool id = true ; id = id + num ; id = id + id ; return num ; }
+
+# Tokens from test case 2:
+# int main ( ) { int id ; float id = num ; id = num + id ; func ( id ) ; return num . num ; }
