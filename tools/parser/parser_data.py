@@ -101,3 +101,35 @@ table = [
 
 # Tokens from test case 2:
 # int main ( ) { int id ; float id = num ; id = num + id ; func ( id ) ; return num . num ; }
+
+productions = {
+    1: ("E'", ["P"]),
+    2: ("P", ["B"]),
+    3: ("B", ["E", "B"]),
+    4: ("B", ["leftBrace", "B", "rightBrace"]),
+    5: ("B", ["A", "M", "B"]),
+    6: ("B", [""]),
+    7: ("E", ["E", "plus", "T"]),
+    8: ("E", ["E", "minus", "T"]),
+    9: ("E", ["A", "F", "assignment", "T"]),
+    10: ("E", ["A", "T"]),
+    11: ("E", ["F", "assignment", "T"]),
+    12: ("E", ["R"]),
+    13: ("E", ["T"]),
+    14: ("T", ["T", "multiply", "F"]),
+    15: ("T", ["T", "divide", "F"]),
+    16: ("T", ["F", "semicolon"]),
+    17: ("T", ["F"]),
+    18: ("F", ["leftParen", "E", "rightParen"]),
+    19: ("F", ["identifier"]),
+    20: ("F", ["integer"]),
+    21: ("F", ["integer", ".", "integer"]),
+    22: ("F", ["true"]),
+    23: ("F", ["false"]),
+    24: ("F", ["printf", "leftParen", "E", "rightParen"]),
+    25: ("A", ["int"]),
+    26: ("A", ["float"]),
+    27: ("A", ["bool"]),
+    28: ("M", ["main", "leftParen", "rightParen"]),
+    29: ("R", ["return", "E"])
+}
