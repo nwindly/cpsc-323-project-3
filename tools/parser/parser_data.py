@@ -43,11 +43,11 @@ productions = {
     12: ("D", ["Type", "id", "assignment", "V", "semicolon"]),
     13: ("A", ["id", "assignment", "E", "semicolon"]),
     14: ("R", ["return", "V", "semicolon"]),
-    15: ("E", ["id"])
-    16: ("E", ["V"])
-    17: ("E", ["E", "plus", "E"])
-    18: ("V", ["integer"])
-    19: ("V", ["integer", "dot", "integer"])
-    20: ("V", ["id"])
+    15: ("E", ["id"]),
+    16: ("E", ["V"]),
+    17: ("E", ["E", "plus", "E"]),
+    18: ("V", ["integer"]),
+    19: ("V", ["integer", "dot", "integer"]),
+    20: ("V", ["id"]),
     21: ("V", ["true"])
 }
