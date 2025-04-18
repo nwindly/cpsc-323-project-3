@@ -27,26 +27,25 @@ table = [
 ]
 
 # TO DO: fix productions accordingly
-productions = {
-    1: ("P", ["F"]),
-    2: ("F", ["T", "main", "leftParen", "rightParen", "B"]),
-    3: ("T", ["int"]),
-    4: ("T", ["float"]),
-    5: ("T", ["bool"]),
-    6: ("B", ["leftBrace", "S", "rightBrace"]),
-    7: ("S", ["S", "S"]),
-    8: ("S", ["S"]),
-    9: ("S", ["D"]),
-    10: ("S", ["A"]),
-    11: ("S", ["R"]),
-    12: ("D", ["Type", "id", "assignment", "V", "semicolon"]),
-    13: ("A", ["id", "assignment", "E", "semicolon"]),
-    14: ("R", ["return", "V", "semicolon"]),
-    15: ("E", ["id"]),
-    16: ("E", ["V"]),
-    17: ("E", ["E", "plus", "E"]),
-    18: ("V", ["integer"]),
-    19: ("V", ["integer", "dot", "integer"]),
-    20: ("V", ["id"]),
-    21: ("V", ["true"])
-}
+# Work in Progress Production Rules
+# E' -> P
+# P -> B
+# B -> E B
+# B -> { B }
+# B -> ''
+# E -> E + T
+# E -> E - T
+# E -> A F = T
+# E -> T
+# T -> T * F
+# T -> T / F
+# T -> F ;
+# T -> F
+# F -> ( E )
+# F -> id
+# F -> num
+# A -> int
+# A -> float
+
+# Use this website
+#   https://jsmachines.sourceforge.net/machines/slr.html 
