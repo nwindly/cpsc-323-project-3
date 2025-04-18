@@ -1,7 +1,7 @@
 token_names = ["integer", "identifier", "number", "comment", "leftParen", "rightParen", "leftBracket", "rightBracket", "leftBrace", "rightBrace", "dot", "plus", "minus", "multiply", "divide", "modulus", "lessThan", "greaterThan", "assignment", "semicolon", "comma", "increment", "decrement", "lessThanE", "greaterThanE", "logicEual", "logicANd", "logicOr", "logicNot", "bitAnd", "bitOr"]
 
 # true or false will be considered as an identifier for the parser because the job is for semantic
-token_keywords = ["bool", "int", "return", "if", "switch", "float", "while", "else", "case", "char", "for", "goto", "unsigned", "main", "break", "continue", "void"]
+token_keywords = ["printf", "true", "false", "bool", "int", "return", "if", "switch", "float", "while", "else", "case", "char", "for", "goto", "unsigned", "main", "break", "continue", "void"]
 
 dfa_table = [ 
 #  a-Z    0-9   -     !     =     +     <      >     &    |     (      )    {     }      *     /    ;    .        [    ]      ,    %
