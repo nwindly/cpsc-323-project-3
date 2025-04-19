@@ -51,7 +51,7 @@ def parser(token_stream):
             cst_stack.append(tree_node(current_token))
 
             input_index += 1
-            debug_print(f"Shifted Stack: {stack}")
+            debug_print(f"Shifted Stack: {stack}\n")
 
         elif action.startswith('R'):
             production_index = int(action[1:])
@@ -68,7 +68,7 @@ def parser(token_stream):
             goto_state = table[new_state][table_column.index(lhs)]
             stack.append(lhs)
             stack.append(int(goto_state))
-            debug_print(f"Reduced Stack: {stack}")
+            debug_print(f"Reduced Stack: {stack}\n")
 
             # Create CST node
             num_children = len(rhs)
