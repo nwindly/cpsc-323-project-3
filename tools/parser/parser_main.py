@@ -23,7 +23,7 @@ def parser(token_stream):
     cst_stack = []
     input_index = 0
 
-    debug_print(f"Beginning Stack: {stack}")
+    # debug_print(f"Beginning Stack: {stack}")
 
     while True:
         current_state = stack[-1]
