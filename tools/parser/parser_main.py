@@ -2,7 +2,7 @@ from .parser_data import *
 from .tree import *
 
 # Change this from True/False to enable/disable debug log
-DEBUG = True
+DEBUG = False
 
 
 def debug_print(message):
