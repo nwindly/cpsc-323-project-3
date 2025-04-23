@@ -10,16 +10,24 @@ def main():
     # IMPORTANT: element of nodes is a tree object. When using Print(element), it will print the value. However,
     # the value's type is NOT string. It is a tree object type. Therefore, we need to typecast it to String everytime
     # we want to do any calculations and comparisons.
-    # EXAMPLE:
-    # x = nodes[0]
-    # print("P"== str(x))
-    # print(type(x))
-    # print(x)
+    #
+    #    EXAMPLE:
+    #
+    #   x = nodes[0]
+    #   print("P"== str(x))
+    #   print(type(x))
+    #   print(x)
+    #
+    #   a = nodes[7] + "sh"
+    #   TypeError: unsupported operand type(s) for +: 'tree_node' and 'str'
 
     index = 0
     for i in nodes:
         print(f"{index}: {i}")
         index = index + 1
+
+    x = nodes[7] + "sh"
+    print(x)
 
 
 
