@@ -2,7 +2,7 @@ from tools.lexer.lexer_main import lexer
 from tools.parser.parser_main import *
 
 def main():
-    token_stream = lexer("./test_cases/3.in")
+    token_stream = lexer("./test_cases/1.in")
 
     tree = parser(token_stream)
     nodes = tree.get_all_nodes()
