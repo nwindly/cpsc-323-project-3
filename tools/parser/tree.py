@@ -5,12 +5,12 @@ class tree_node:
         self.element = element
         # Initialize a list of children for this node
         self.children = []
-    
+
     def add_child(self, node):
         self.children.append(node)
 
     # Func has spaces argument for it to be recursive
-    def print_tree(self, spaces = "", last_node = True):
+    def print_tree(self, spaces="", last_node=True):
         if (last_node):
             connection = "└── "
         else:
@@ -23,7 +23,7 @@ class tree_node:
             spaces += "    "
         else:
             spaces += "│   "
-        
+
         # Now call recursively to print all subtrees
         counter = 0
         for child_node in self.children:
@@ -35,3 +35,16 @@ class tree_node:
 
             child_node.print_tree(spaces, last_node)
             counter += 1
+
+    # Prints an array of node objects
+    def get_all_nodes(self):
+        nodes = [self]  # Start with the current node
+        for child in self.children:
+            # Recursively add all child nodes
+            nodes.extend(child.get_all_nodes())
+        return nodes
+
+    def __str__(self):
+        return self.element
+
+    
