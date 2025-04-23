@@ -1,6 +1,5 @@
 from tools.lexer.lexer_main import lexer
 from tools.parser.parser_main import *
-from semantic import *
 
 def main():
     token_stream = lexer("./test_cases/3.in")
