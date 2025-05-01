@@ -1,5 +1,6 @@
 from tools.lexer.lexer_main import lexer
 from tools.parser.parser_main import *
+from tools.semantic_analyzer.semantic import *
 
 
 def main():
@@ -10,10 +11,11 @@ def main():
     for node in nodes:
         print(f"{index}: {node}")
         index = index + 1
+    print("---------------")
 
+    semantic = SemanticAnalyzer(nodes)
+    semantic.analyze()
 
-
-    
 
 if __name__ == "__main__":
     main()
