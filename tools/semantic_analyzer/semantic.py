@@ -26,6 +26,16 @@ class SemanticAnalyzer:
 
             # TODO: Assignment: F identifier = T or literal
 
+            # Variable declaration or use
+            elif self.nodes[i].element == 'F' and self.nodes[i+1].element == 'identifier':
+                var_name = self.get_identifier_name(i+1)
+                if var_name not in self.declared:
+                    print(f"Error! The variable '{var_name}' was used before declaration.")
+                elif var_name not in self.assigned:
+                    print(f"Error! The variable '{var_name}' was used before it was assigned a value.")
+                i += 2
+                continue
+            
             i += 1
 
         print("\nSymbol Table:")
