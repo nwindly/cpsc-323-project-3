@@ -4,6 +4,8 @@ class SemanticAnalyzer:
         self.symbol_table = {}
         self.identifier_counter = 1
         self.identifier_map = {}  # index to identifier names (id1, id2, etc..)
+        self.declared = set()
+        self.assigned = set()
 
     def get_identifier_name(self, index):
         if index not in self.identifier_map:
