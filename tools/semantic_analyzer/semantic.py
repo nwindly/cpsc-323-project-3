@@ -25,9 +25,10 @@ class SemanticAnalyzer:
                     i += 4
                     continue
 
-            # TODO: Assignment: F identifier = T or literal
 
-            # Variable declaration or use
+            # Assignment: F identifier = T or literal
+
+            # Check if variable has been properly declared and its use
             elif self.nodes[i].element == 'F' and self.nodes[i+1].element == 'identifier':
                 var_name = self.get_identifier_name(i+1)
                 if var_name not in self.declared:
