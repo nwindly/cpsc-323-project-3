@@ -35,8 +35,10 @@ def main():
     """
 
     token_stream = lexer("./test_cases/1.in")
+
     tree = parser(token_stream)
     nodes = tree.get_all_nodes()
+
     index = 0
     for node in nodes:
         print(f"{index}: {node}")
