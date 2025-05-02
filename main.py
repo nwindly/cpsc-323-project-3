@@ -27,9 +27,10 @@ def main():
         Looking back, we should have designed our lexer to produce not only token types but also their associated values.
         This would have allowed the semantic analyzer to properly track declarations, usages, and perform type checking.
 
-        Unfortunately, we have found out about this issue too late. Even though our project is incomplete, we've learned a lot about how to communicate with other
-        team members and work together as a team. We also learned about how complicated compilers are, with many implementations and details to be appreciated.
-        We tried our best to finish this project, but was not able to do it on time. However, we are grateful for the opportunity to learn from this experience.
+        Unfortunately, we have found out about this issue too late. Even though our project is incomplete, we've learned a lot about how to 
+        communicate with other team members and work together as a team. We also learned about how complicated compilers are, with many 
+        implementations and details to be appreciated. We tried our best to finish this project, but was not able to do it on time.
+        However, we are grateful for the opportunity to learn from this experience.
 
     """
 
