@@ -52,5 +52,6 @@ def main():
     # semantic = SemanticAnalyzer(nodes)
     semantic.analyze()
 
+
 if __name__ == "__main__":
     main()

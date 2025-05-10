@@ -12,7 +12,7 @@ def lexer(filename):
         print('EXAMPLE: main("case1.in")')
         return
 
-    token_stream = ""
+    token_stream = []
     chars_scanned = ""
 
     # Current state can be derived by rows (meaning state) and columns (meaning input), q0 = row 0
@@ -94,5 +94,6 @@ def lexer(filename):
     # final_token_stream = token_stream.split()
     # print(final_token_stream)
 
-    return token_stream
+    # return final_token_stream
+    return token_stream 
 

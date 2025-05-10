@@ -1,14 +1,15 @@
 class SemanticAnalyzer:
     def __init__(self, nodes):
         self.nodes = nodes
-        self.symbol_table = {}
+        self.symbol_table = {}  # Maps variable to its type and assigned value
         self.identifier_counter = 1
-        self.identifier_map = {}  # index to identifier names (id1, id2, etc..)
-        self.declared = set()  # Track declared variables
-        self.assigned = set()  # Track assigned variables
-        self.undeclared_but_used = set() # Track undeclared variables that have been used
+        self.identifier_map = {}  # Maps index to unique identifier names (id1, id2, etc.)
+        self.declared = set()  # Keeps track of declared variables
+        self.assigned = set()  # Keeps track of assigned variables
+        self.undeclared_but_used = set() # Keeps track of undeclared variables that have been used
 
     def get_identifier_name(self, index, is_declared=False):
+        # Id assigned only during declaration
         if is_declared:
             if index not in self.identifier_map:
                 self.identifier_map[index] = f"id{self.identifier_counter}"
@@ -18,12 +19,12 @@ class SemanticAnalyzer:
             return self.identifier_map[index]
         return None
 
-    def analyze(self):
+    def analyze(self): 
         i = 0
         declared_count = 0  # Tracking number of identifiers declared - can delete
 
         while i < len(self.nodes):
-            # Variable declaration: A -> type, F -> identifier
+            # Variable type declaration: A -> type, F -> identifier
             if (
                 i + 3 < len(self.nodes)
                 and self.nodes[i].element == 'A'
@@ -117,3 +118,4 @@ class SemanticAnalyzer:
             print(f"\n{declared_count} identifiers successfully declared.")
         else:
             print("\nNo identifiers declared.")
+

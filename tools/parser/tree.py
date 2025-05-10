@@ -5,7 +5,7 @@ class tree_node:
         self.element = element
         # Initialize a list of children for this node
         self.children = []
-        self.semantic_info = semantic_info # To add necessary info in order to do semantic analysis
+        self.semantic_info = semantic_info # To add info in parse tree for semantic analysis
 
     def add_child(self, node):
         self.children.append(node)
@@ -18,12 +18,11 @@ class tree_node:
             connection = "├── "
 
         line = spaces + connection + self.element
-
+        # Print info into the parse tree
         if self.semantic_info:
             line += f" (info: {self.semantic_info})"
         else:
             line += " (No info.)"
-        
         print(line)
 
         if (last_node):

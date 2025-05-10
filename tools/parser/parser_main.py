@@ -2,7 +2,7 @@ from .parser_data import *
 from .tree import *
 
 # Change this from True/False to enable/disable debug log
-DEBUG = False
+DEBUG = True
 
 
 def debug_print(message):
@@ -27,6 +27,7 @@ def parser(token_stream):
 
     while True:
         current_state = stack[-1]
+        
         current_token = input[input_index][0] # outputs tuple
 
         if current_token == "$":
@@ -36,6 +37,7 @@ def parser(token_stream):
                 print(f"Error: Token at index {input_index} does not follow the tuple form: {input[input_index]}")
                 return
             current_value = input[input_index][1]
+
 
         debug_print(f"Current token: {current_token} with value {current_value}")
 
@@ -85,8 +87,7 @@ def parser(token_stream):
             del cst_stack[-num_children:]
 
             new_node = tree_node(lhs)
-
-            # Adding the info based on the production symbol
+            
             if lhs == 'A':
                 var_type = rhs[0]
                 new_node.semantic_info = {'var_type': var_type}
@@ -106,7 +107,8 @@ def parser(token_stream):
                 else:
                     current_token = input[input_index-1][1]
                     new_node.semantic_info = {'var_name': current_token}
-            
+
+                            
             for child in children:
                 new_node.add_child(child)
 
