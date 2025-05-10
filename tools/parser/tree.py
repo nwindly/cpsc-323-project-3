@@ -1,10 +1,11 @@
 # Class to make a list of tree nodes
 
 class tree_node:
-    def __init__(self, element):
+    def __init__(self, element, semantic_info=None):
         self.element = element
         # Initialize a list of children for this node
         self.children = []
+        self.semantic_info = semantic_info # To add necessary info in order to do semantic analysis
 
     def add_child(self, node):
         self.children.append(node)
@@ -17,6 +18,12 @@ class tree_node:
             connection = "├── "
 
         line = spaces + connection + self.element
+
+        if self.semantic_info:
+            line += f" (info: {self.semantic_info})"
+        else:
+            line += " (No info.)"
+        
         print(line)
 
         if (last_node):
