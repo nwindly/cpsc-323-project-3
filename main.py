@@ -39,15 +39,18 @@ def main():
     tree = parser(token_stream)
     nodes = tree.get_all_nodes()
 
-    index = 0
-    for node in nodes:
-        print(f"{index}: {node}")
-        index = index + 1
-    print("---------------")
+    if tree:
+        tree.print_tree()
 
-    semantic = SemanticAnalyzer(nodes)
+    # index = 0
+    # for node in nodes:
+    #     print(f"{index}: {node}")
+    #     index = index + 1
+    # print("---------------")
+
+    semantic = SemanticAnalyzer(tree.get_all_nodes())
+    # semantic = SemanticAnalyzer(nodes)
     semantic.analyze()
-
 
 if __name__ == "__main__":
     main()
