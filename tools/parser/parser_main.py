@@ -2,7 +2,7 @@ from .parser_data import *
 from .tree import *
 
 # Change this from True/False to enable/disable debug log
-DEBUG = False
+DEBUG = True
 
 
 def debug_print(message):
@@ -27,8 +27,19 @@ def parser(token_stream):
 
     while True:
         current_state = stack[-1]
-        current_token = input[input_index]
-        debug_print(f"Current token: {current_token}")
+        
+        current_token = input[input_index][0] # outputs tuple
+
+        if current_token == "$":
+            current_value = None  # Avoid counting the delimiter
+        else:
+            if len(input[input_index]) < 2:
+                print(f"Error: Token at index {input_index} does not follow the tuple form: {input[input_index]}")
+                return
+            current_value = input[input_index][1]
+
+
+        debug_print(f"Current token: {current_token} with value {current_value}")
 
         action = table[current_state][table_column.index(current_token)]
         debug_print(f"Action: {action}")
@@ -76,6 +87,28 @@ def parser(token_stream):
             del cst_stack[-num_children:]
 
             new_node = tree_node(lhs)
+            
+            if lhs == 'A':
+                var_type = rhs[0]
+                new_node.semantic_info = {'var_type': var_type}
+            elif lhs == 'F':
+                # debug_print(f"rhs: {rhs}")
+                # debug_print(f"rhs length: {len(rhs)}")
+                if len(rhs) == 3:
+                    first_val = input[input_index-3][1]
+                    second_val = input[input_index-2][1]
+                    third_val = input[input_index-1][1]
+
+                    float_val = f"{first_val}{second_val}{third_val}"
+                    new_node.semantic_info = {'var_value': float(float_val)}
+                elif rhs[0] == 'integer':
+                    int_val = input[input_index-1][1]
+                    new_node.semantic_info = {'var_value': int(int_val)}
+                else:
+                    current_token = input[input_index-1][1]
+                    new_node.semantic_info = {'var_name': current_token}
+
+                            
             for child in children:
                 new_node.add_child(child)
 
