@@ -51,7 +51,8 @@ def lexer(filename):
                     is_keyword = get_keyword(chars_scanned)
                     if is_keyword != "IDENTIFIER":
                         token = is_keyword
-                    token_stream = token_stream + " " + token
+                    # token_stream = token_stream + " " + token
+                    token_stream.append((token, chars_scanned))
                     # DEBUG: print(f"For '{chars_scanned}', saved '{token}' to token_stream")
 
                     if (token == "comment"):
@@ -84,13 +85,14 @@ def lexer(filename):
         is_keyword = get_keyword(chars_scanned)
         if is_keyword != "IDENTIFIER":
             token = is_keyword
-        token_stream = token_stream + " " + token
+        # token_stream = token_stream + " " + token
+        token_stream.append((token, chars_scanned))
         # DEBUG: print(f"For '{chars_scanned}', saved '{token}' to token_stream")
 
     # print("Token stream:", token_stream)
 
-    final_token_stream = token_stream.split()
+    # final_token_stream = token_stream.split()
     # print(final_token_stream)
 
-    return final_token_stream
+    return token_stream
 
