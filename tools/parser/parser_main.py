@@ -2,7 +2,7 @@ from .parser_data import *
 from .tree import *
 
 # Change this from True/False to enable/disable debug log
-DEBUG = True
+DEBUG = False
 
 
 def debug_print(message):
@@ -88,6 +88,7 @@ def parser(token_stream):
 
             new_node = tree_node(lhs)
             
+            # Adding the info based on the production symbol
             if lhs == 'A':
                 var_type = rhs[0]
                 new_node.semantic_info = {'var_type': var_type}
@@ -100,14 +101,20 @@ def parser(token_stream):
                     third_val = input[input_index-1][1]
 
                     float_val = f"{first_val}{second_val}{third_val}"
-                    new_node.semantic_info = {'var_value': float(float_val)}
+                    new_node.semantic_info = {'var_value': float_val} # Turn into float
                 elif rhs[0] == 'integer':
                     int_val = input[input_index-1][1]
-                    new_node.semantic_info = {'var_value': int(int_val)}
+                    new_node.semantic_info = {'var_value': int_val} # Turn into integer
                 else:
-                    current_token = input[input_index-1][1]
-                    new_node.semantic_info = {'var_name': current_token}
-
+                    var_name = input[input_index-1][1]
+                    new_node.semantic_info = {'var_name': var_name}
+            elif lhs == 'M':
+                new_node.semantic_info = {'function_name': 'main', 'return_type': 'int'}
+            elif lhs == 'R':
+                return_type = children[1]
+                print(f"Return node: {return_type.element}, info: {return_type.semantic_info}")
+                var_type = input[input_index-2][0] # fix this
+                new_node.semantic_info = {'var_type': var_type}
                             
             for child in children:
                 new_node.add_child(child)
