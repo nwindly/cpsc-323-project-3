@@ -6,6 +6,7 @@ class SemanticAnalyzer:
         self.identifier_map = {}  # Maps index to unique identifier names (id1, id2, etc.)
         self.declared = set()  # Tracks declared variables
         self.undeclared_but_used = set() # Tracks undeclared variables that have been used
+        self.return_type = None # Used for type checking return types
 
     # Function to retrieve the actual variable name or create the names (id1, id2, ...)
     def get_identifier_name(self, index, is_declared=False, actual_var_name=None): # Getting or creating name when is_declared is False
@@ -26,9 +27,8 @@ class SemanticAnalyzer:
     def get_type_from_value_node(self, node, next_node=None):
         if not node.semantic_info:
             return 'unknown'
-
         val = node.semantic_info.get('var_value')
-        if isinstance(val, str):
+        if isinstance(val, str): # str, float, int, bool based on if semantic info output was converted or not
             if val in ['true', 'false']:
                 return 'bool'
             elif '.' in val:
@@ -44,19 +44,18 @@ class SemanticAnalyzer:
         return 'unknown'
     
     def assign_value(self, node):
-        # Making sure that the node has semantic_info and 'var_value' or 'var_name'
-        # Helpful for declaration before use
+        # Making sure that the node has semantic info and either var val or type
         if node.semantic_info:
             print(f"Node: {node}")
             if 'var_value' in node.semantic_info:
-                print(f"Found var_value: {node.semantic_info['var_value']} for a node.")
+                pass
             elif 'var_name' in node.semantic_info:
                 var_name = node.semantic_info['var_name']
                 if var_name not in self.declared:
                     self.undeclared_but_used.add(var_name)
-                    print(f"Warning: {var_name} is used but not declared.")
+                    print(f"Error: {var_name} is used but not declared.")
 
-    # Analyzing the nodes based on the patterns of the flat CST nodes
+    # Analyzing the nodes based on the patterns of the CST nodes
     def analyze(self): 
         # # For debugging purposes - can delete
         # print("\nPrinting a flat list of CST nodes:")
@@ -107,7 +106,7 @@ class SemanticAnalyzer:
                         value_str = value_node.semantic_info.get('var_value')
                         # Type checking error
                         if declared_type != assigned_type:
-                            print(f"\nTypeChecking Error: Cannot assign {assigned_type} to {declared_type} for variable '{var_name}'!")
+                            print(f"\nTypeChecking Error: Cannot assign {assigned_type} to {declared_type} for variable '{var_name}'.")
                         else:
                             self.symbol_table[var_name]['value'] = value_str
                             self.symbol_table[var_name]['assigned_type'] = assigned_type
@@ -116,9 +115,9 @@ class SemanticAnalyzer:
                                 'assigned_type': assigned_type
                             })
                     else:
-                        print(f"\nTypeChecking Error: Could not locate value node to assign to variable '{var_name}'!")
+                        print(f"\nTypeChecking Error: There's no value to the variable '{var_name}'.")
 
-                    i += 4  # Skip to next after assignment
+                    i += 4 
 
                 continue
             
@@ -129,12 +128,32 @@ class SemanticAnalyzer:
                     self.undeclared_but_used.add(var_name)
             
             # Handling mixed-mode expressions
-            # ...
+            elif self.nodes[i].element == 'plus':
+                # Check the operands to the left and to the right
+                if i + 1 < len(self.nodes) and i - 1 >= 0:
+                    left_operand = self.nodes[i-2] # F -> identifier node
+                    right_operand = self.nodes[i+2] # F -> identifier node
+
+                    # Get the type from the operand nodes in the expression and check if types are the same
+                    left_type = self.get_type_from_value_node(left_operand)
+                    right_type = self.get_type_from_value_node(right_operand)
+
+                    if left_type != right_type:
+                        print(f"Mixed Mode Expression Error: Cannot add {left_type} and {right_type}.")
+                    else:
+                        print(f"Operands are compatible for the plus operation.")
             
             # Handling type checking for return types
-            # ...
+            elif node.element == 'R': 
+                factor_node = node.children[0] 
+                return_type = self.get_type_from_value_node(factor_node)
+                self.return_type = return_type
+                
+                if self.return_type != 'int': 
+                    print(f"TypeChecking Error: Return type '{self.return_type}' does not match 'int'.")
+                i += 1
             
-            # Assign values when a 'var_value' is found in the node
+            # Assign values there's a value in the node
             self.assign_value(node)
             i += 1
 
@@ -147,5 +166,5 @@ class SemanticAnalyzer:
         if self.undeclared_but_used:
             print("\nError: These variables were used before declaration:")
             for var in self.undeclared_but_used:
-                print(f" - {var}!")
+                print(f" - {var}")
 
