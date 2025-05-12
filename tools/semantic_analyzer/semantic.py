@@ -1,3 +1,4 @@
+from tools.parser.parser_main import *
 class SemanticAnalyzer:
     def __init__(self, nodes):
         self.nodes = nodes
