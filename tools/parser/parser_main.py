@@ -2,7 +2,7 @@ from .parser_data import *
 from .tree import *
 
 # Change this from True/False to enable/disable debug log
-DEBUG = False
+DEBUG = True
 
 
 def debug_print(message):
@@ -111,10 +111,12 @@ def parser(token_stream):
             elif lhs == 'M':
                 new_node.semantic_info = {'function_name': 'main', 'return_type': 'int'}
             elif lhs == 'R':
-                return_type = children[1]
-                print(f"Return node: {return_type.element}, info: {return_type.semantic_info}")
-                var_type = input[input_index-2][0] # fix this
-                new_node.semantic_info = {'var_type': var_type}
+                factor_node = rhs[1]  
+                if isinstance(factor_node, str):
+                    if '.' in factor_node:  # If string input has a dot --> float
+                        new_node.semantic_info = {'var_type': 'float'}
+                    else:
+                        new_node.semantic_info = {'var_type': 'integer'}
                             
             for child in children:
                 new_node.add_child(child)
